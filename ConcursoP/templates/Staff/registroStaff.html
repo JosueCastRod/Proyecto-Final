@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>REGISTRO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/uikit.min.css')}}" />
+    <script src="{{url_for('static',filename='js/main.js')}}" ></script>
+</head>
+<body>
+
+    <header>
+        <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click">
+            <div class="uk-navbar-left">
+                <img data-src="{{url_for('static',filename='img/logoITESZ.png')}} " class="uk-align-center" width="800 rem" uk-img>
+                <ul class="uk-navbar-nav uk">
+                    <li class="" ><a href="/"><span class="uk-margin-small-right" uk-icon="home"></span>Inicio</a></li>
+                    <li class="" ><a href="/Banco"><span class="uk-margin-small-right" uk-icon="code"></span>Banco de problemas</a></li>
+                    <li class="" ><a href="/Usuarios"><span class="uk-margin-small-right" uk-icon="user"></span>Usuario</a></li>
+                    <li class="" ><a href="/Edicion"><span class="uk-margin-small-right" uk-icon="grid"></span>Ediciones</a></li>
+                    <li class="" ><a href="/Docentes"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Docentes</a></li>
+                    <li class="" ><a href="/Staff"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Staff</a></li>
+                    <li class="" ><a href="/ProblemasResueltos"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Problemas Resueltos</a></li>
+                    <li class="" ><a href="/Equipos"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Equipos</a></li>
+                    <li class="" ><a href="/Carreras"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Carreras</a></li>
+                    <li class="" ><a href="/Categorias"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Categorias</a></li>
+                    <li class="" ><a href="/Alumnos"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Alumnos</a></li>
+                    <li class="" ><a href="/cerrarSesion"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Cerrar Sesión</a></li>
+                    <li class="" ><a href="#"><span class="uk-margin-small-right" uk-icon="sign-in"></span>{{current_user.Nombre}}</a></li>
+                    
+                </ul>
+        
+            </div>
+
+
+        </nav>
+        <H1 align="center"> ¡Registro Staff!</H1>
+
+        <form class="uk-grid-small" method="POST" action="/AddStaff" uk-grid>
+            <div class="uk-width-1-2@s">
+                <input class="uk-input" name="Nombre" type="text" placeholder="Nombre" required>
+            </div>
+            <div class="uk-width-1-2@s">
+                <input class="uk-input" name="Sexo" maxlength="1" type="text" placeholder="Sexo" required>
+            </div>
+            <div class="uk-width-1-4@s">
+                <input class="uk-input" name="Telefono" type="text" placeholder="Núm Tel." required>
+            </div>
+            <div class="uk-width-1-4@s">
+                <input class="uk-input" name="Email" type="email" placeholder="email" required>
+            </div>
+            <div class="uk-width-1-2@s">
+                <input class="uk-input" name="IdTipo" type="number" placeholder="IdTipo" required>
+            </div>
+            <div class="uk-width-1-4@s">
+                <input class="uk-input" name="Estatus" type="text" placeholder="estatus" required>
+            </div>
+            <div class="uk-width-1-2@s">
+                <input class="uk-input" name="Contraseña" type="password" placeholder="contraseña" required>
+            </div>
+            
+            
+            <p uk-margin>
+                <button class="uk-button uk-button-danger">Guardar</button>
+            </p>
+            </form>
+        </header>
+
+
+        <div class="col-md-7">
+            <table class="table table-striped table-bordered bg-white table-sm">
+                <thead>
+                    <tr>
+                        <td>IdStaff</td>
+                        <td>Nombre</td>
+                        <td>Sexo</td>
+                        <td>Telefono</td>
+                        <td>Email</td>
+                        <td>IdTipo</td>
+                        <td>Estatus</td>
+                        <td>Contraseña</td>
+                        <td>Opciones</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for staff in Staff %}
+                    <tr>
+                        <td>{{staff.IdStaff}}     </td>
+                        <td>{{staff.Nombre}}   </td>
+                        <td>{{staff.Sexo}}      </td>
+                        <td>{{staff.Telefono}}      </td>
+                        <td>{{staff.Email}}      </td>
+                        <td>{{staff.IdTipo}}      </td>
+                        <td>{{staff.Estatus}}      </td>
+                        <td>{{staff.Contraseña}}      </td>
+                        <td>
+                            <a href="/EditStaff/{{staff.IdStaff}}" class="btn btn-warning btn-block">Editar</a>
+                            <a href="javascript:eliminarStaff({{staff.IdStaff}})" class="btn btn-danger btn-block btn-delete">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <hr>
+            &copy;Derechos reservados ITESZ 
+        </footer>
+    
+    
+       
+        
+    </body>
+    </html>
