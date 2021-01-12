@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>banco de proyectos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/uikit.min.css')}}" />
+</head>
+<body>
+
+    <header>
+        <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click">
+            <div class="uk-navbar-left">
+                <img data-src="{{url_for('static',filename='img/logoITESZ.png')}} " class="uk-align-center" width="800 rem" uk-img>
+                <ul class="uk-navbar-nav uk">
+                    <li class="" ><a href="/"><span class="uk-margin-small-right" uk-icon="home"></span>Inicio</a></li>
+                    <li class="" ><a href="/Banco"><span class="uk-margin-small-right" uk-icon="code"></span>Banco de problemas</a></li>
+                    <li class="" ><a href="/Usuarios"><span class="uk-margin-small-right" uk-icon="user"></span>Usuario</a></li>
+                    <li class="" ><a href="/Edicion"><span class="uk-margin-small-right" uk-icon="grid"></span>Ediciones</a></li>
+                    <li class="" ><a href="/Docentes"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Docentes</a></li>
+                    <li class="" ><a href="/Staff"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Staff</a></li>
+                    <li class="" ><a href="/ProblemasResueltos"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Problemas Resueltos</a></li>
+                    <li class="" ><a href="/Equipos"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Equipos</a></li>
+                    <li class="" ><a href="/Carreras"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Carreras</a></li>
+                    <li class="" ><a href="/Categorias"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Categorias</a></li>
+                    <li class="" ><a href="/Alumnos"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Alumnos</a></li>
+                    <li class="" ><a href="/cerrarSesion"><span class="uk-margin-small-right" uk-icon="sign-in"></span>Cerrar Sesión</a></li>
+                    <li class="" ><a href="#"><span class="uk-margin-small-right" uk-icon="sign-in"></span>{{current_user.Nombre}}</a></li>
+                    
+                </ul>
+        
+            </div>
+
+
+        </nav>
+        <H1 align="center"> ¡Editar Banco de proyectos!</H1>
+        </header>
+
+    <form class="uk-grid-small" method="POST" action="/Bancos/modificar" uk-grid>
+        <div class="uk-width-1-2@s">
+            <input class="uk-input" value="{{Banco.IdBanco}}" name="IdBanco" type="text" placeholder="IdBanco" readonly required>
+        </div>
+        <div class="uk-width-1-2@s">
+            <input class="uk-input" value="{{Banco.Nombre}}"  name="Nombre" type="text" placeholder="Nombre" required>
+        </div>
+        <div class="uk-width-1-2@s">
+            <input class="uk-input" value="{{Banco.Puntos}}"  name="Puntos" maxlength="3" type="text" placeholder="Puntos" required>
+        </div>
+        <div class="uk-width-1-4@s">
+            <input class="uk-input" value="{{Banco.Tiempo}}"  name="Tiempo" type="time" placeholder="Tiempo" required>
+        </div>
+        <div class="uk-width-1-4@s">
+            <input class="uk-input" value="{{Banco.Descripcion}}"  name="Descripcion" type="text" placeholder="Descripcion" required>
+        </div>
+        <div class="uk-width-1-2@s">
+            <input class="uk-input" value="{{Banco.ColorGlobo}}"  name="ColorGlobo" type="text" placeholder="ColorGlobo" required>
+        </div>
+        <p uk-margin>
+            <button class="uk-button uk-button-danger">Guardar</button>
+        </p>
+        </form>
+
+       
+    <footer>
+        <hr>
+        &copy;Derechos reservados ITESZ 
+    </footer>
+
+
+   
+    
+</body>
+</html>
